@@ -31,7 +31,6 @@ export class EventsService {
         this.events$.subscribe(res => {
             console.log(res);
             this.events = res.map(item => new Event(item));
-            // console.log(this.events);
         });
     }
 
