@@ -1,0 +1,47 @@
+<fieldset *ngIf="event">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6 form-group">
+      <label for="admin-event-name">Name</label>
+      <input type="text" class="form-control" id="admin-event-name" placeholder="Enter name" [(ngModel)]="event.name">
+    </div>
+
+    <div class="col-xs-12 col-lg-6 form-group">
+      <label for="admin-event-description">Description</label>
+      <input type="text" class="form-control" id="admin-event-description" placeholder="Enter description"
+             [(ngModel)]="event.description">
+    </div>
+
+    <div class="col-xs-12 col-lg-6 form-group">
+      <label for="admin-event-location">Location</label>
+      <input type="text" class="form-control" id="admin-event-location" placeholder="Enter location"
+             [(ngModel)]="event.description">
+    </div>
+
+    <div class="col-xs-12 col-lg-6 form-group">
+      <label>Dates</label>
+      <div class="form-inline">
+        <div class="input-group" (blur)="startPicker.close()">
+          <input type="text" ngbDatepicker #startPicker="ngbDatepicker" [(ngModel)]="event.startDate"
+                 (dateSelect)="onStartDateSelect($event, endPicker, e)" title="Start Date"/>
+          <div class="input-group-append" (click)="startPicker.toggle()"><i class="input-group-text fa fa-calendar"></i>
+          </div>
+        </div>
+        &nbsp; to &nbsp;
+        <div class="input-group">
+          <input #e type="text" ngbDatepicker #endPicker="ngbDatepicker" [(ngModel)]="event.endDate" title="End Date"/>
+          <div class="input-group-append" (click)="endPicker.toggle()"><i class="input-group-text fa fa-calendar"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 form-group">
+      <label for="admin-event-abstract">Abstract</label>
+      <textarea rows="10" class="form-control" id="admin-event-abstract" placeholder="Enter abstract"
+                [(ngModel)]="event.abstract"></textarea>
+    </div>
+  </div>
+
+  <pre>{{ event | json }}</pre>
+
+</fieldset>

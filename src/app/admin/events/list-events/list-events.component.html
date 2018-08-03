@@ -1,0 +1,38 @@
+<div class="row">
+
+  <div class="col-11">
+    <h2>Events</h2>
+  </div>
+  <div class="col-1">
+    <a class="btn btn-info" [routerLink]="[ '/admin/events/add' ]">Add</a>
+  </div>
+
+  <div class="col-12">
+
+    <table *ngIf="events" class="table table-sm table-striped table-bordered">
+      <thead>
+      <tr>
+        <th class="event-name">Name</th>
+        <th class="event-description">Description</th>
+        <th class="event-start-date d-none d-sm-table-cell">Start</th>
+        <th class="event-end-date d-none d-sm-table-cell">End</th>
+        <th class="edit-link">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let event of events">
+        <td class="event-name">{{ event.name }}</td>
+        <td class="event-description">{{ event.description }}</td>
+        <td class="event-start-date d-none d-sm-table-cell">{{ event.startDate | date: 'dd/MM/yyyy' }}</td>
+        <td class="event-end-date d-none d-sm-table-cell">{{ event.endDate | date: 'dd/MM/yyyy' }}</td>
+        <td class="edit-link">
+          <a [routerLink]="[ '/admin/events/', event.id, 'edit' ]"
+             class="btn btn-link">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

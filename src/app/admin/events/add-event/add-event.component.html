@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-10">
+    <h2>Add Event</h2>
+  </div>
+  <div class="col-2">
+    <a class="btn btn-info" [routerLink]="[ '/admin/events' ]">List Events</a>
+  </div>
+</div>
+
+<ev-event-form [(event)]="event"></ev-event-form>
+
+<div>
+  <button class="btn btn-primary" (click)="addEvent($event)">Add</button>
+</div>
